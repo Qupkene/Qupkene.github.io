@@ -790,8 +790,12 @@ button.assigned-btn {
                 callItem.style.backgroundColor = '#f8d7da'; // Red background for rejected
                 callItem.innerHTML += '<span class="status-icon">❌</span>'; // Red cross
 
-                callItem.querySelector('.accept-btn').remove(); // Remove Reject button
-                callItem.querySelector('.reject-btn').remove(); // Remove Reject button
+                if (callItem.querySelector('.accept-btn')) {
+                    callItem.querySelector('.accept-btn').remove(); // Remove Accept button
+                }
+                if (callItem.querySelector('.reject-btn')) {
+                    callItem.querySelector('.reject-btn').remove(); // Remove Reject button
+                }
 
                 if (acceptedCall === callItem) {
                     canAcceptCall = true; // Allow accepting new calls again
@@ -1321,7 +1325,7 @@ function assignOfficers(callItem, availableOfficers) {
         // Loo uus kõne
         addCall();
         
-        let randomInterval = Math.floor(Math.random() * (15500)) + 10000;
+        let randomInterval = Math.floor(Math.random() * (18000)) + 1000;
 
         // Rekursiivselt kutsu sama funktsioon random intervalliga
         setTimeout(addRandomCall, randomInterval);
@@ -1562,7 +1566,7 @@ function assignOfficers(callItem, availableOfficers) {
             }
 
             document.getElementById("day").innerText = day;
-        }, 3000);
+        }, 24000);
 
     function saveGame() {
         localStorage.setItem("Rating", localStorage.Rating);
